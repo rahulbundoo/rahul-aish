@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex">
+  <title>Our Memory Journal – Rahul & Aish</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Open+Sans&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      background: #1a1a1a;
+      color: #f0f0f0;
+      font-family: 'Open Sans', sans-serif;
+      line-height: 1.8;
+    }
+    header {
+      text-align: center;
+      padding: 3rem 1rem 2rem;
+      background: #111;
+    }
+    header h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.8rem;
+      color: #ffd700;
+    }
+    section {
+      max-width: 1100px;
+      margin: auto;
+      padding: 2rem 1rem;
+    }
+    .memory-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      grid-auto-rows: 200px;
+      gap: 1rem;
+      justify-items: center;
+    }
+    .memory {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      border-radius: 8px;
+      box-shadow: 0 0 15px rgba(255, 215, 0, 0.1);
+    }
+    .memory:nth-child(3n) {
+      grid-row: span 2;
+    }
+    .memory:nth-child(4n) {
+      grid-column: span 2;
+    }
+    .memory img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: filter 0.4s ease;
+      filter: brightness(40%);
+    }
+    .memory:hover img {
+      filter: brightness(100%);
+    }
+    .caption {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      color: #ffd700;
+      font-family: 'Playfair Display', serif;
+      font-size: 0.9rem;
+      text-align: center;
+      padding: 0.5rem 1rem;
+      transition: opacity 0.3s ease;
+      opacity: 1;
+      pointer-events: none;
+    }
+    .memory:hover .caption {
+      opacity: 0;
+    }
+    .letter, .promises {
+      background: #222;
+      padding: 1.5rem;
+      border-left: 5px solid #ffd700;
+      border-radius: 6px;
+      margin-top: 2rem;
+    }
+    .letter h2, .promises h2 {
+      color: #ffd700;
+      font-family: 'Playfair Display', serif;
+    }
+    .promise-list {
+      list-style: none;
+      padding-left: 1rem;
+    }
+    .promise-list li::before {
+      content: '💛';
+      margin-right: 0.5rem;
+    }
+    footer {
+      text-align: center;
+      font-size: 0.9rem;
+      color: #777;
+      padding: 2rem 1rem;
+      background: #111;
+      margin-top: 3rem;
+    }
+	
+	h2 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+p {
+  font-size: 1.1rem;
+}
+
+ul.promise-list li {
+  margin-bottom: 0.75rem;
+  font-size: 1.05rem;
+  color: #eee;
+}
+  </style>
+</head>
+<body>
+<!-- (Body content continues unchanged) -->
+<header style="background: linear-gradient(to right, #1a1a1a, #0d0d0d); box-shadow: 0 0 20px #ffd700; border-bottom: 2px solid #ffd700;">
+  <h1 style="font-size:3.2rem; letter-spacing: 2px;">A Love Etched in Time</h1>
+  <p style="color: #ccc; font-style: italic;">A private memory journal written from the heart — from Rahul to Aish</p>
+</header>
+
+<section>
+  <p style="text-align:center; font-size:1.4rem; font-family:'Playfair Display', serif; color:#ffd700;">
+    “In your eyes, I found my favorite universe. In your smile, I found the meaning of home.”
+  </p>
+  <p style="text-align:center; font-size:1.1rem; color: #ccc;">
+    This journal isn’t just pages and pictures — it’s my soul whispering your name in every memory.
+  </p>
+</section>
+
+  <section class="memory-grid">
+    <!-- BEGIN REAL PHOTOS -->
+<div class="memory">
+  <img src="photos/20240105_185305.jpg" alt="Memory">
+  <div class="caption">One of those moments I wish I could relive forever.</div>
+</div>
+
+<div class="memory">
+  <img src="photos/20240311_153222.jpg" alt="Memory">
+  <div class="caption">I still remember how my heart felt on this day - Leker bat fort.</div>
+</div>
+
+<div class="memory">
+  <img src="photos/20240322_180849.jpg" alt="Memory">
+  <div class="caption">One of those moments I wish I could relive forever.</div>
+</div>
+
+<div class="memory">
+  <img src="photos/20240322_181109.jpg" alt="Memory">
+  <div class="caption">Love looked exactly like this on March 22, 2024.</div>
+</div>
+
+<div class="memory">
+  <img src="photos/20240511_092836.jpg" alt="Memory">
+  <div class="caption">Every second that day felt like a love song.</div>
+</div>
+
+<div class="memory">
+  <img src="photos/20240608_141833.jpg" alt="Memory">
+  <div class="caption">Your smile brightens my day</div>
+</div>
+
+<div class="memory">
+  <img src="photos/Screenshot_20240619_183016_WhatsApp.jpg" alt="Memory">
+  <div class="caption">No filter or makeup needed when you're the one in the frame</div>
+</div>
+
+<div class="memory">
+  <img src="photos/20240812_173714.jpg" alt="Memory">
+  <div class="caption">My favorite heart</div>
+</div>
+
+<div class="memory">
+  <img src="photos/20240913_195643.jpg" alt="Memory">
+  <div class="caption">Address me as your majesty - Burger King</div>
+</div>
+
+<div class="memory">
+  <img src="photos/20241105_131854.jpg" alt="Memory">
+  <div class="caption">On November 5, 2024, your smile was brighter than the sun.</div>
+</div>
+
+<div class="memory">
+  <img src="photos/20241224_190248.jpg" alt="Memory">
+  <div class="caption">The kind of eyes to make you fall in love - December 24, 2024.</div>
+</div>
+
+<div class="memory">
+  <img src="photos/20250222_091942.jpg" alt="Memory">
+  <div class="caption">One of our favorite adventures</div>
+</div>
+
+<div class="memory">
+  <img src="photos/20250407_115602.jpg" alt="Memory">
+  <div class="caption">Toujours avec so ban ti zess </div>
+</div>
+
+<div class="memory">
+  <img src="photos/20250409_073843.jpg" alt="Memory">
+  <div class="caption">The morning routine, petit café avec coco cherise</div>
+</div>
+
+<div class="memory">
+  <img src="photos/20250410_065930.jpg" alt="Memory">
+  <div class="caption">You were the most beautiful thing I saw that day.</div>
+</div>
+
+<div class="memory">
+  <img src="photos/20250417_074559.jpg" alt="Memory">
+  <div class="caption">Us on April 17, 2025 — everything felt just right.</div>
+</div>
+
+<div class="memory">
+  <img src="photos/20250625_080743(1).jpg" alt="Memory">
+  <div class="caption">This moment on June 25, 2025 — pure magic with you.</div>
+</div>
+
+<div class="memory">
+  <img src="photos/20250625_081015.jpg" alt="Memory">
+  <div class="caption">One of those moments I wish I could relive forever.</div>
+</div>
+
+<div class="memory">
+  <img src="photos/20250625_122551.jpg" alt="Memory">
+  <div class="caption">One of those days you remember for the rest of your life</div>
+</div>
+
+<div class="memory">
+  <img src="photos/20250625_125237.jpg" alt="Memory">
+  <div class="caption">Love looked exactly like this on June 25, 2025.</div>
+</div>
+  </section>
+
+<section class="letter">
+  <h2>My Letter to You</h2>
+  <p>My dearest Aish,</p>
+  <p>
+    From the very first moment our eyes met, something in me whispered — *this is it*. 
+    Since then, every day with you has been a melody I never want to stop playing. Your laughter is the rhythm of my peace, your touch, my calm in every storm.
+  </p>
+  <p>
+    You are the dream I never dared to ask for. In your presence, I’ve discovered depths of love I never imagined possible. You’ve taught me what it means to feel deeply, live fully, and love endlessly.
+  </p>
+  <p>
+    I promise to always cherish your heart, protect your smile, and hold your soul with reverence. You are my once-in-a-lifetime, and I vow to spend mine loving you with everything I am.
+  </p>
+  <p style="margin-top: 2rem;">Forever yours,</p>
+  <p style="font-weight: bold; color: #ffd700;">Rahul Bundoo</p>
+</section>
+
+<section class="promises">
+  <h2>10 Promises to You, My Love</h2>
+  <ul class="promise-list">
+    <li>I promise to always find my way back to you, no matter how lost the world gets.</li>
+    <li>I promise to protect your heart like it’s the most precious thing I’ve ever held — because it is.</li>
+    <li>I promise to believe in your dreams, even when they scare you.</li>
+    <li>I promise to never let our love go dull — we’ll dance, laugh, and live like the world is ours.</li>
+    <li>I promise to fight for us, even on the days when it’s hard.</li>
+    <li>I promise to be your home — your shelter, your peace, your biggest fan.</li>
+    <li>I promise to celebrate your highs and hold you gently through your lows.</li>
+    <li>I promise to grow with you, learn with you, and love you deeper every day.</li>
+    <li>I promise to make your smile the most beautiful thing I see each day.</li>
+    <li>And most of all, I promise to make forever feel like the greatest love story ever told — ours.</li>
+  </ul>
+</section>
+
+<section style="text-align:center; margin-top:2rem; font-style:italic; color:#ffd700; font-family:'Playfair Display', serif;">
+  <p>“When this world fades and all the pages close, know that my heart will still be whispering your name — for love like ours never dies.”</p>
+</section>
+
+  <footer>
+    &copy; 2025 Rahul & Aish — Our Forever Story
+  </footer>
+</body>
+</html>
