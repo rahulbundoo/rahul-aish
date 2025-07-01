@@ -138,9 +138,23 @@ ul.promise-list li {
   </p>
 </section>
 
-  <section class="memory-grid">
-    <!-- BEGIN REAL PHOTOS -->
-  </section>
+<section style="text-align:center; margin: 1rem 0;">
+  <select id="yearFilter">
+    <option value="all">All Years</option>
+    <!-- Dynamically filled -->
+  </select>
+</section>
+
+<section class="memory-grid" id="memoryGrid">
+  <!-- Images load here -->
+</section>
+
+<div style="text-align: center; margin: 2rem 0;">
+  <button id="loadMoreBtn" style="padding: 0.7rem 1.5rem; background: #ffd700; color: #000; border: none; border-radius: 4px; cursor: pointer;">
+    Load More
+  </button>
+</div>
+
 
 <section class="letter">
   <h2>My Letter to You</h2>
@@ -182,32 +196,84 @@ ul.promise-list li {
   <footer>
     &copy; 2025 Rahul & Aish — Our Forever Story
   </footer>
+
 <script>
-  document.addEventListener("DOMContentLoaded", function () {
-    const memoryGrid = document.querySelector(".memory-grid");
+  const memoryGrid = document.getElementById("memoryGrid");
+  const loadMoreBtn = document.getElementById("loadMoreBtn");
+  const yearFilter = document.getElementById("yearFilter");
 
+  let allMemories = [];
+  let filteredMemories = [];
+  let currentIndex = 0;
+  const batchSize = 8;
+
+  function extractYearFromPath(path) {
+    const match = path.match(/photos\/(20\d{2})/);
+    return match ? match[1] : "Unknown";
+  }
+
+  function populateYearFilter(memories) {
+    const years = new Set(memories.map(m => extractYearFromPath(m.src)));
+    [...years].sort().forEach(year => {
+      const option = document.createElement("option");
+      option.value = year;
+      option.textContent = year;
+      yearFilter.appendChild(option);
+    });
+  }
+
+  function renderBatch() {
+    const nextBatch = filteredMemories.slice(currentIndex, currentIndex + batchSize);
+    nextBatch.forEach((item, index) => {
+      const memory = document.createElement("div");
+      memory.className = "memory";
+      const globalIndex = currentIndex + index + 1;
+      if (globalIndex % 3 === 0) memory.style.gridRow = "span 2";
+      if (globalIndex % 4 === 0) memory.style.gridColumn = "span 2";
+
+      memory.innerHTML = `
+        <img src="${item.src}" alt="Memory">
+        <div class="caption">${item.caption}</div>
+      `;
+      memoryGrid.appendChild(memory);
+    });
+
+    currentIndex += batchSize;
+    if (currentIndex >= filteredMemories.length) {
+      loadMoreBtn.style.display = "none";
+    } else {
+      loadMoreBtn.style.display = "inline-block";
+    }
+  }
+
+  function applyFilter(year) {
+    memoryGrid.innerHTML = "";
+    currentIndex = 0;
+
+    if (year === "all") {
+      filteredMemories = [...allMemories];
+    } else {
+      filteredMemories = allMemories.filter(m => extractYearFromPath(m.src) === year);
+    }
+
+    renderBatch();
+  }
+
+  document.addEventListener("DOMContentLoaded", () => {
     fetch("memories.json")
-      .then(response => response.json())
+      .then(res => res.json())
       .then(data => {
-        data.forEach((item, index) => {
-          const memory = document.createElement("div");
-          memory.className = "memory";
-          if ((index + 1) % 3 === 0) memory.style.gridRow = "span 2";
-          if ((index + 1) % 4 === 0) memory.style.gridColumn = "span 2";
-
-          memory.innerHTML = `
-            <img src="${item.src}" alt="Memory">
-            <div class="caption">${item.caption}</div>
-          `;
-          memoryGrid.appendChild(memory);
-        });
-      })
-      .catch(err => {
-        memoryGrid.innerHTML = "<p style='color:red;'>Failed to load memories.</p>";
-        console.error("Error loading memories:", err);
+        allMemories = data;
+        filteredMemories = [...data];
+        populateYearFilter(data);
+        renderBatch();
       });
+
+    loadMoreBtn.addEventListener("click", () => renderBatch());
+    yearFilter.addEventListener("change", () => applyFilter(yearFilter.value));
   });
 </script>
+
 
 	
 </body>
